@@ -48,6 +48,7 @@
 		"better-sqlite3": "^11.8.0",
 		"drizzle-orm": "^0.40.0",
 		"lucide-svelte": "^0.542.0",
-		"marked": "^16.2.1"
+		"marked": "^16.2.1",
+		"nodemailer": "^7.0.6"
 	}
 }

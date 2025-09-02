@@ -2,7 +2,7 @@
     let { data, children } = $props();
     let pages = [
         { title: 'Admin Help', url: '/dashboard/admin-help' },
-        { title: 'Pro Email', url: '/dashboard/proemails' },
+        { title: 'Email', url: '/dashboard/emails' },
         { title: 'Add Help', url: '/dashboard/add-help' },
     ];
 </script>

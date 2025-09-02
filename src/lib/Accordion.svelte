@@ -10,7 +10,7 @@
    <button onclick={() => isOpen = !isOpen} 
     class="flex flex-row justify-between items-center" 
     transition:fade={{ duration: 300 }}>
-    <h2 class="text-md">{title}</h2>
+    <h5 class="text-md">{title}</h5>
     <ChevronUp class="h-6 w-6 {isOpen ? '' : '-rotate-180'} transition-transform duration-600"/></button>
 
    {#if isOpen}
