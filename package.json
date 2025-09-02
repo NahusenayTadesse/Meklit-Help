@@ -49,6 +49,7 @@
 		"drizzle-orm": "^0.40.0",
 		"lucide-svelte": "^0.542.0",
 		"marked": "^16.2.1",
-		"nodemailer": "^7.0.6"
+		"nodemailer": "^7.0.6",
+		"quill": "^2.0.3"
 	}
 }

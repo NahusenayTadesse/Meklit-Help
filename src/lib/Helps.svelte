@@ -54,7 +54,7 @@
     <ul class="flex flex-col gap-8">
         {#each filteredHelps as help}  <!-- And here -->
             <li>
-                <Accordion title={help.title} description={help.description} />
+                <Accordion title={help.title} description={help.description} video={help.video} />
             </li>
         {/each}
     </ul>

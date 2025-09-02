@@ -3,7 +3,7 @@
     import { ChevronUp } from 'lucide-svelte';
     let isOpen = $state(false);
     import { marked } from 'marked';
-    let { title, description } = $props();
+    let { title, description, video="" } = $props();
 </script>
    
    <div class="flex flex-col lg:w-2xl justify-self-center gap-2">
@@ -15,5 +15,12 @@
 
    {#if isOpen}
        <p transition:fly={{y: -20, duration: 300}}>{@html marked(description)}</p>
+         {#if video}
+           <iframe class="w-full aspect-video"
+           src={video} 
+           title={title}    
+           frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; 
+           picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+       {/if}
    {/if}
    </div>

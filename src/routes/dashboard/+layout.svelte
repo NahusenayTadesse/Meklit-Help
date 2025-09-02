@@ -23,7 +23,7 @@
             {/each}
         </ul>
     </nav>
-    <main class="flex-1 p-8">
+    <main class="flex-1 p-8 ml-56 bg-gray-50 min-h-screen">
         {@render children()}
     </main>
 </div>

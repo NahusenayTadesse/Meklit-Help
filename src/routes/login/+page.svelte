@@ -38,7 +38,7 @@
 			<div class="flex gap-4 mt-4">
 				<button
 					class="flex flex-row gap-2 w-full justify-center items-center
-					rounded-lg bg-transparent backdrop-blur-lg px-4 py-2 font-semibold text-dark 
+					rounded-lg bg-transparent hover:bg-pink hover:text-white backdrop-blur-lg px-4 py-2 font-semibold text-dark 
 					shadow-lg border-1 border-dark/20 transition  
 					hover:scale-110 hover:shadow-pink/20"
 				>

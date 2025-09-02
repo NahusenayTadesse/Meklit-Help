@@ -1,12 +1,14 @@
-
 <script lang="ts">
  let { form } = $props();
  import { enhance } from "$app/forms";
 	import { Loader, CircleCheck,CircleAlert, SendHorizontal } from "lucide-svelte";
 	import { fly } from "svelte/transition";
+  import RichTextEditor from '$lib/RichTextEditor.svelte';
 
     let loading = $state(false);
    import { btnFilled } from "$lib/global.svelte";
+
+   let value = $state('');
 
  let visible = $state(false);
  let errorVisible = $state(false);
@@ -49,8 +51,8 @@ function onsubmit(){
 
  
 </script>
-{#snippet inputs(placeholder, name, type)}
-  <input {type} {name} {placeholder} required
+{#snippet inputs(placeholder, name, type, required=true)}
+  <input {type} {name} {placeholder} required={required}
   class="w-full p-3 mb-5 border-1 border-gray-200 rounded-md 
    bg-gray-50 text-base focus:ring-light-blue-4 focus:ring-1 focus:outline-none focus:bg-light-blue-1">
   {/snippet}
@@ -74,7 +76,7 @@ function onsubmit(){
   </div>
 {/if}
 
-  <h3 class="text-center">Enter Your Email Messages Here</h3>
+  <h2 class="text-center">Enter Your Customer Help Here</h2>
 <form
     class="lg:w-1/2 w-full items-start justify-centerflex flex-col gap-4 mx-auto my-8 p-8 bg-white rounded-xl shadow-lg font-sans"
     method="POST" 
@@ -82,30 +84,23 @@ function onsubmit(){
     onsubmit={onsubmit}
    >
 
-     {@render inputs('Enter name of reciepient', 'name', 'text')}
-     {@render inputs('Enter email address of reciepient', 'email', 'email')}
+     {@render inputs('Enter name of Help Title', 'title', 'text')}
 
-     {@render inputs('Subject', 'subject', 'text')}
-    
-    <textarea
-        id="reply"
-        name="message"
-        rows="4"
-        required
-        placeholder="Enter your messages here"
-        class="w-full p- h-48  mb-6 border border-gray-200 rounded-md bg-gray-50 text-base"
-    ></textarea>
+     {@render inputs('Add Video Url Here', 'video', 'url', false)}
+
+     <RichTextEditor bind:value={value} placeholder="Enter your messages here" />
+
+     <input type="hidden" name="description" bind:value={value}>
 
     <button
         type="submit"
-        class="{btnFilled} w-full flex flex-row justify-center items-center gap-2"
+        class="{btnFilled} w-full flex flex-row justify-center items-center gap-2 mt-8"
      
     >   
-       {#if loading}
+       {#if loading}  
         <Loader class="animate-spin" />
         {/if}
-
-        Send Message
+         Add Help
         <SendHorizontal />
     </button>
 
@@ -113,6 +108,3 @@ function onsubmit(){
 
 
 </div>
-
-
-
