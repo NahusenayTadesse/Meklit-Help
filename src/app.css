@@ -1,0 +1,14 @@
+@import 'tailwindcss';
+
+
+:root {
+    --pink: #E3378D;
+    --dark: hsl(0, 0%, 15%);
+}
+
+@theme {
+
+        --color-pink: #E3378D;
+        --color-dark: #262626;
+
+}
