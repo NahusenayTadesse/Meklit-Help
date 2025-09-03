@@ -1,4 +1,4 @@
-import type { Actions } from "./$types";
+import type { Actions, } from "./$types";
 import { db } from "$lib/server/db";
 import { help } from "$lib/server/db/schema";
 

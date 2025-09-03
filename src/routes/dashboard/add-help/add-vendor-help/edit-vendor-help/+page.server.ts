@@ -2,12 +2,12 @@
 
 import type { Actions, PageServerLoad } from "./$types";
 import { db } from "$lib/server/db";
-import { help } from "$lib/server/db/schema";
+import { vendorHelp } from "$lib/server/db/schema";
 import {eq} from "drizzle-orm";
 
 export const load: PageServerLoad = async () => {
     try {
-        const helps = await db.select().from(help);
+        const helps = await db.select().from(vendorHelp);
         return {
             helps
         };
@@ -31,11 +31,11 @@ export const actions: Actions = {
 
         // Perform your action here, e.g., save to database
         try {
-            await db.update(help).set({
+            await db.update(vendorHelp).set({
                 title,
                 video,
                 description
-            }).where(eq(help.id, id));
+            }).where(eq(vendorHelp.id, id));
 
             return {
                 success: true,
@@ -56,7 +56,7 @@ export const actions: Actions = {
 
         // Perform your action here, e.g., delete from database
         try {
-            await db.delete(help).where(eq(help.id, id));
+            await db.delete(vendorHelp).where(eq(vendorHelp.id, id));
 
             return {
                 success: true,
