@@ -50,9 +50,9 @@
 
 {:then helps}
 
-{#if filteredHelps.length > 0}  <!-- Use filteredHelps here -->
+{#if filteredHelps.length > 0} 
     <ul class="flex flex-col gap-8">
-        {#each filteredHelps as help}  <!-- And here -->
+        {#each filteredHelps as help}
             <li>
                 <Accordion title={help.title} description={help.description} video={help.video} />
             </li>

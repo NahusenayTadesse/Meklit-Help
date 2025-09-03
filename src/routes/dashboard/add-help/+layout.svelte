@@ -7,6 +7,8 @@
 <div class="flex flex-row gap-2 flex-start"> 
     <a href="/dashboard/add-help/add-vendor-help"  class="{btn} {page.url.pathname === '/dashboard/add-help/add-vendor-help' ? 'bg-dark text-white' : ''}">Add Vendor Help</a>
     <a href="/dashboard/add-help/" class="{btn} {page.url.pathname === '/dashboard/add-help' ? '!bg-dark !text-white' : ''}">Add Help</a>
+    <a href="/dashboard/add-help/edit-help" class="{btn} {page.url.pathname === '/dashboard/add-help/edit-help' ? '!bg-dark !text-white' : ''}">Edit Help</a>
 </div>
-
-{@render children()}''
+<div class="pt-4">
+    {@render children()}
+</div>

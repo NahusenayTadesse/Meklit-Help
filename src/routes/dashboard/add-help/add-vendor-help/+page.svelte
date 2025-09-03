@@ -51,6 +51,12 @@ function onsubmit(){
 
  
 </script>
+<svelte:head>
+    <title>Add Vendor Help</title>
+    <meta name="description" content="Form to add new help articles and resources for vendors." />
+</svelte:head>
+
+
 {#snippet inputs(placeholder, name, type, required=true)}
   <input {type} {name} {placeholder} required={required}
   class="w-full p-3 mb-5 border-1 border-gray-200 rounded-md 
@@ -85,6 +91,7 @@ function onsubmit(){
    >
 
      {@render inputs('Enter name of Help Title', 'title', 'text')}
+
 
      {@render inputs('Add Video Url Here', 'video', 'url', false)}
 

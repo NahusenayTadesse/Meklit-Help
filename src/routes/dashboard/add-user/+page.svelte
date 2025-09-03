@@ -3,12 +3,9 @@
  import { enhance } from "$app/forms";
 	import { Loader, CircleCheck,CircleAlert, SendHorizontal } from "lucide-svelte";
 	import { fly } from "svelte/transition";
-  import RichTextEditor from '$lib/RichTextEditor.svelte';
 
     let loading = $state(false);
    import { btnFilled } from "$lib/global.svelte";
-
-   let value = $state('');
 
  let visible = $state(false);
  let errorVisible = $state(false);
@@ -82,21 +79,20 @@ function onsubmit(){
   </div>
 {/if}
 
-  <h2 class="text-center">Enter Your Customer Help Here</h2>
+  <h2 class="text-center">Add New User</h2>
 <form
     class="lg:w-1/2 w-full items-start justify-centerflex flex-col gap-4 mx-auto my-8 p-8 bg-white rounded-xl shadow-lg font-sans"
     method="POST" 
+    action="?/register"
     use:enhance 
     onsubmit={onsubmit}
    >
 
-     {@render inputs('Enter name of Help Title', 'title', 'text')}
+     {@render inputs('Enter Name of User', 'name', 'text')}
 
-     {@render inputs('Add Video Url Here', 'video', 'url', false)}
+     {@render inputs('User Email', 'email', 'email')}
 
-     <RichTextEditor bind:value={value} placeholder="Enter your messages here" />
 
-     <input type="hidden" name="description" bind:value={value}>
 
     <button
         type="submit"
@@ -106,7 +102,7 @@ function onsubmit(){
        {#if loading}  
         <Loader class="animate-spin" />
         {/if}
-         Add Help
+         Add User
         <SendHorizontal />
     </button>
 

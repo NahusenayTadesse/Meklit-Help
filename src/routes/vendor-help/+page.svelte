@@ -4,7 +4,7 @@
 </script>
 
 <svelte:head>
-    <title>Help Center</title>
+    <title>Vendor Help Center</title>
     <meta name="description" content="Find help articles and resources." />
 </svelte:head>
 

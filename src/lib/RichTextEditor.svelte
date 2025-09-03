@@ -1,8 +1,7 @@
 <!-- QuillEditor.svelte -->
 <script lang="ts">
   import { onMount } from 'svelte';
-  import Quill from 'quill';
-  import 'quill/dist/quill.snow.css';
+  // import 'quill/dist/quill.snow.css';
 
   /* -------------------------------------------------
    * Public props
@@ -10,7 +9,7 @@
 
 
   let { value= $bindable(), placeholder="Start writing..."} = $props();
-  let quill: Quill;
+ 
   let container: HTMLDivElement; 
 
   /* -------------------------------------------------
@@ -26,8 +25,12 @@
   /* -------------------------------------------------
    * Lifecycle
    * ------------------------------------------------- */
-  onMount(() => {
-    quill = new Quill(container, {
+  onMount(async () => {
+    		const { default: Quill } = await import("quill");
+         await import ('quill/dist/quill.snow.css');
+
+
+    let quill = new Quill(container, {
       theme: 'snow',
       placeholder,
       modules: { toolbar }

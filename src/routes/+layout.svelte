@@ -14,7 +14,7 @@
 <Header  />
 {@render children?.()}
 
-<footer class="text-center text-dark mt-8 flex flex-row justify-center items-center gap-2">
+<footer class="text-center pb-4 text-dark mt-16 flex lg:flex-row flex-col justify-center items-center gap-2">
 	<div>
 		&copy; {new Date().getFullYear()} ByMeklit. All rights reserved.
 	</div>

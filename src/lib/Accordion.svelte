@@ -6,9 +6,9 @@
     let { title, description, video="" } = $props();
 </script>
    
-   <div class="flex flex-col lg:w-2xl justify-self-center gap-2">
+   <div class="flex flex-col lg:w-2xl lg:justify-self-center gap-2 px-6">
    <button onclick={() => isOpen = !isOpen} 
-    class="flex flex-row justify-between items-center" 
+    class="flex flex-row justify-between lg:items-center" 
     transition:fade={{ duration: 300 }}>
     <h5 class="text-md">{title}</h5>
     <ChevronUp class="h-6 w-6 {isOpen ? '' : '-rotate-180'} transition-transform duration-600"/></button>

@@ -1,16 +1,27 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
-	import { LogIn } from 'lucide-svelte';
+	import { Eye, EyeOff, LogIn } from 'lucide-svelte';
 	import type { ActionData } from './$types';
 
 	let { form }: { form: ActionData } = $props();
-	let input =  `shadow-md border-1 border-dark/20 rounded-lg 
-    p-2 w-sm focus:border-white focus:ring-1 
+
+	let types:string = $state('password');
+
+  function toggle(){
+    if(types === 'password'){
+      types = 'text';
+    } else {
+      types = 'password';
+    }
+  }
+	let input =  `shadow-md border-1 border-dark/20 rounded-lg p-2 focus:border-white focus:ring-1 
     focus:ring-pink/50 focus:shadow-pink/30 focus:outline-none
-     transition-all duration-300 ease-in-out`
+     transition-all duration-300 ease-in-out w-full`
+
+	 let EyeIcon = $derived(types === 'password' ? Eye : EyeOff);
 </script>
 
-<div class="min-h-screen flex items-center justify-center ">
+<div class="flex items-center justify-center ">
 	<div class="bg-white rounded-2xl shadow-2xl p-8 w-full max-w-md">
 		<img src="/Logo.webp" alt="ByMelkit Logo">
 		<h1 class="text-3xl font-bold text-center text-dark mb-6 tracking-tight">Login</h1>
@@ -26,14 +37,17 @@
 					autocomplete="username"
            class={input}				/>
 			</label>
-			<label class="flex flex-col text-gray-700 font-medium">
+			<label class="relative flex flex-col text-gray-700 font-medium">
 				<span class="mb-1">Password</span>
 				<input
-					type="password"
+					type={types}
 					name="password"
 					autocomplete="current-password"
 					class={input}
 				/>
+				<button type="button" onclick={toggle} title={types === 'password' ? 'Show password' : 'Hide password'} class="absolute right-3 top-[70%] transform -translate-y-1/2">
+     <EyeIcon class="text-gray-600 z-10"  />
+   </button>
 			</label>
 			<div class="flex gap-4 mt-4">
 				<button

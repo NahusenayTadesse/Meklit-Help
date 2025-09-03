@@ -4,6 +4,8 @@
  import { enhance } from "$app/forms";
 	import { Loader, CircleCheck,CircleAlert, SendHorizontal } from "lucide-svelte";
 	import { fly } from "svelte/transition";
+  import RichTextEditor from '$lib/RichTextEditor.svelte';
+  let value = $state('')
 
     let loading = $state(false);
    import { btnFilled } from "$lib/global.svelte";
@@ -49,6 +51,10 @@ function onsubmit(){
 
  
 </script>
+<svelte:head>
+    <title>Send Professional Email</title>
+    <meta name="description" content="Contact form for sending emails." />
+</svelte:head>
 {#snippet inputs(placeholder, name, type)}
   <input {type} {name} {placeholder} required
   class="w-full p-3 mb-5 border-1 border-gray-200 rounded-md 
@@ -86,19 +92,21 @@ function onsubmit(){
      {@render inputs('Enter email address of reciepient', 'email', 'email')}
 
      {@render inputs('Subject', 'subject', 'text')}
-    
-    <textarea
+     <RichTextEditor bind:value />
+     <input type="hidden" name="message" bind:value />
+
+    <!-- <textarea
         id="reply"
         name="message"
-        rows="4"
+        rows="4"  
         required
         placeholder="Enter your messages here"
         class="w-full p- h-48  mb-6 border border-gray-200 rounded-md bg-gray-50 text-base"
-    ></textarea>
+    ></textarea> -->
 
     <button
         type="submit"
-        class="{btnFilled} w-full flex flex-row justify-center items-center gap-2"
+        class="{btnFilled} w-full flex flex-row justify-center items-center gap-2 mt-8"
      
     >   
        {#if loading}

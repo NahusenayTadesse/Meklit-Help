@@ -5,7 +5,7 @@
 
      let sections = [
          { id: '/help', name: 'Help' },
-         { id: 'vender-help', name: 'Help for Vendors' },
+         { id: '/vendor-help', name: 'Help for Vendors' },
 
      ];
 
@@ -84,7 +84,7 @@
             <a
                 href="/{section.id}"
                 title={section.name}
-                class="text-dark hover:text-pink transition-transform duration-300 ease-in-out hover:scale-125"
+                class="text-dark hover:text-pink transition-transform duration-300 ease-in-out hover:scale-125 text-xl"
               {onclick}>
                 {section.name} 
             </a>
