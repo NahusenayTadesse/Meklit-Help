@@ -3,12 +3,13 @@
 	import { btnFilled } from '$lib/global.svelte';
     let {help} = $props();
     import RichTextEditor from '$lib/RichTextEditor.svelte';
-	import { BadgeMinus, HardDriveUpload, Loader } from 'lucide-svelte';
-	import { fade } from 'svelte/transition';
+	import { ArrowUp, BadgeMinus, HardDriveUpload, Loader } from 'lucide-svelte';
+	import { fade, fly } from 'svelte/transition';
 
      
      let loading = $state(false);
      let value = $state(help.description);
+     let confirm = $state(false);
 </script>
 
    
@@ -20,6 +21,7 @@
 			await update({reset: false});
 
 			loading = false;
+            confirm = false;
 		};
 	}}
 
@@ -36,11 +38,38 @@
             <input type="hidden" name="id" value={help.id}>
             <input type="hidden" name="description" bind:value>
 
-        
-            <div class="flex flex-row gap-2  w-full">
-            <button type="submit" class="{btnFilled} flex flex-row gap-2 w-[120px]">{#if loading}<Loader class="animate-spin" />{/if} <HardDriveUpload />  Save Edit</button>
-            <button type="submit" formaction="?/delete" class="{btnFilled} !bg-red-500 w-[120px] !text-white flex flex-row gap-2">
-            <BadgeMinus />Delete</button>
+
+            <div class="flex lg:flex-row justify-center flex-col gap-2 w-full">
+            <button type="submit" class="{btnFilled} flex flex-row gap-2 lg:w-[150px] w-full">
+            
+                {#if loading}<Loader class="animate-spin" />{/if} <HardDriveUpload /> Save Edit</button>
+
+        <button type="button" 
+        class="{btnFilled} flex flex-row gap-2 !bg-red-500 text-white lg:w-[150px] w-full"
+        onclick={() => confirm = !confirm}        
+      > <BadgeMinus /> Delete </button>
+       
             </div>
+
+             {#if confirm}
+         <div class="text-center flex flex-col gap-4 justify-center items-center"  transition:fly={{ y: -20, duration: 300 }}>Are you sure you want to delete this help article? This action cannot be undone.
+            <button type="button" 
+            class="{btnFilled} !bg-gray-500 lg:w-auto w-full !text-white  justify-self-center flex flex-row gap-2" 
+            onclick={() => confirm = false}
+            title="Cancel Delete">
+             <ArrowUp class="w-6 h-6"/>
+            Cancel Delete
+            </button>
+            <button 
+            type="submit" 
+            formaction="?/delete" 
+            class="{btnFilled} !bg-red-500 lg:w-auto
+             w-full !text-white  justify-self-center flex flex-row gap-2"
+            >
+             {#if loading}<Loader class="animate-spin" />{/if}
+            <BadgeMinus />I am sure! Delete!</button>
+            
+            </div>
+        {/if}
         </form>
 

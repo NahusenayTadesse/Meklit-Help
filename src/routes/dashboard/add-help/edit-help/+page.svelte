@@ -81,7 +81,7 @@ let searchQuery = $state('');
 </div>
 
 {#if visible}
-  <div class="bg-green-600 w-[400px] flex flex-row flex-wrap text-white fixed bottom-2 right-1 rounded-md p-4" transition:fly={{ x: 200, duration: 500 }}>
+  <div class="bg-green-600 w-[400px] flex flex-row flex-wrap text-white fixed top-6 z-10 right-1 rounded-md p-4" transition:fly={{ x: 200, duration: 500 }}>
    
     <CircleCheck class="text-white justify-self-center w-8 h-8" />
     <h6 class="text-white font-bold"> {form?.message}</h6>

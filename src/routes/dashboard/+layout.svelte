@@ -1,12 +1,13 @@
 <script>
 	import { enhance } from '$app/forms';
 	import { btnFilled } from '$lib/global.svelte';
-	import { LogOut, HandHelping, Mail, UserPlus,ListPlus } from 'lucide-svelte';
+	import { LogOut, Search, LayoutDashboard, Mail, UserPlus,ListPlus } from 'lucide-svelte';
 
 
     let { children } = $props();
     let pages = [
-        { title: 'Admin Help', url: '/dashboard/admin-help', icon: HandHelping },
+        { title: 'Dashboard', url: '/dashboard', icon: LayoutDashboard  },
+        { title: 'Admin Help', url: '/dashboard/admin-help', icon: Search },
         { title: 'Email', url: '/dashboard/emails', icon: Mail },
         { title: 'Add Help', url: '/dashboard/add-help', icon: ListPlus },
         { title: 'User', url: '/dashboard/add-user', icon: UserPlus }
@@ -22,7 +23,6 @@
 <div class="lg:flex hidden min-h-screen">
     <nav class="w-56 bg-white shadow-lg  items-center text-white p-8 flex flex-col justify-between pb-24 fixed h-full">
         <div class="flex flex-col w-full">
-        <h2 class="mb-8 text-2xl font-bold text-dark">Dashboard</h2>
         <ul class="list-none p-0 flex flex-col justify-start items-start">
             {#each pages as item}
                 <li class="mb-5 hover:scale-110 transition-all ease-in-out duration-300">
@@ -52,7 +52,7 @@
 </div>
 
 
-<section class="lg:hidden flex flex-col p-0">
+<section class="lg:hidden flex flex-col p-2">
 
    
   <div class="pt-16 py-24 px-4">
@@ -63,13 +63,10 @@
 <div class="grid lg:hidden grid-cols-4 gap-1 fixed bottom-0 z-100 w-full bg-dark justify-center items-center align-center p-2">
 
 
-  {#each pages as item}
-
+{#each pages.slice(1) as item}
     <a href={item.url} class="flex flex-col gap-1 text-white justify-center items-center">
-
-    <item.icon size="18" />
-    <p class="text-[8px] text-white">{item.title}</p>
-
+        <item.icon size="18" />
+        <p class="text-[8px] text-white">{item.title}</p>
     </a>
   {/each}
     <!-- <form method="post" action="/dashboard/?/logout" class="col-span-1 flex justify-center items-center" use:enhance {onsubmit} >
