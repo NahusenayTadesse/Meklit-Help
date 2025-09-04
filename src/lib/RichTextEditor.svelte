@@ -1,7 +1,7 @@
 <!-- QuillEditor.svelte -->
 <script lang="ts">
   import { onMount } from 'svelte';
-  // import 'quill/dist/quill.snow.css';
+  import 'quill/dist/quill.snow.css';
 
   /* -------------------------------------------------
    * Public props
@@ -26,8 +26,9 @@
    * Lifecycle
    * ------------------------------------------------- */
   onMount(async () => {
-    		const { default: Quill } = await import("quill");
-         await import ('quill/dist/quill.snow.css');
+    
+    
+    const { default: Quill } = await import("quill");
 
 
     let quill = new Quill(container, {

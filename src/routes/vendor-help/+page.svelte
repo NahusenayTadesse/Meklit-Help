@@ -1,6 +1,6 @@
 <script>
     import Helps from '$lib/Helps.svelte';
-    let { data } = $props();
+    let../vender-help/$types.js { data } = $props();
 </script>
 
 <svelte:head>

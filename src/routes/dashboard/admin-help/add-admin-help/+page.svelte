@@ -82,7 +82,7 @@ function onsubmit(){
   </div>
 {/if}
 
-  <h2 class="text-center">Enter Your Vendor Help Here</h2>
+  <h2 class="text-center">Enter Your Admin Help Here</h2>
 <form
     class="lg:w-1/2 w-full items-start justify-centerflex flex-col gap-4 mx-auto my-8 p-8 bg-white rounded-xl shadow-lg font-sans"
     method="POST" 
