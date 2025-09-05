@@ -82,7 +82,7 @@
         {#each sections as section}
         <li transition:slide|global>
             <a
-                href="/{section.id}"
+                href={section.id}
                 title={section.name}
                 class="text-dark hover:text-pink transition-transform duration-300 ease-in-out hover:scale-125 text-xl"
               {onclick}>

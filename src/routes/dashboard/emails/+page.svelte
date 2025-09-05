@@ -8,7 +8,7 @@
   let value = $state('')
 
     let loading = $state(false);
-   import { btnFilled } from "$lib/global.svelte";
+   import { btnFilled, toastmsg, redmsg } from "$lib/global.svelte";
 
  let visible = $state(false);
  let errorVisible = $state(false);
@@ -65,7 +65,7 @@ function onsubmit(){
 
 
 {#if visible}
-  <div class="bg-green-600 w-[400px] flex flex-row flex-wrap text-white fixed top-6 right-1 rounded-md p-4" transition:fly={{ x: 200, duration: 500 }}>
+  <div class={toastmsg} transition:fly={{ x: 200, duration: 500 }}>
    
     <CircleCheck class="text-white justify-self-center w-8 h-8" />
     <h6 class="text-white font-bold"> {form?.message}</h6>
@@ -73,8 +73,8 @@ function onsubmit(){
 {/if}
 
 {#if errorVisible}
-  <div class="bg-red-600 w-[400px] flex flex-row flex-wrap text-white fixed top-6 right-1 rounded-md p-4" transition:fly={{ x: 200, duration: 500 }}>
-    
+  <div class={redmsg} transition:fly={{ x: 200, duration: 500 }}>
+
     <CircleAlert class="text-white justify-self-center w-8 h-8" />
     <h6 class="text-white font-bold">Oops! {form?.message}.</h6>
   </div>

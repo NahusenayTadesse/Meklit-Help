@@ -3,6 +3,7 @@
  import { enhance } from "$app/forms";
 	import { Loader, CircleCheck,CircleAlert, SendHorizontal } from "lucide-svelte";
 	import { fly } from "svelte/transition";
+  import {toastmsg, redmsg} from '$lib/global.svelte';
   import RichTextEditor from '$lib/RichTextEditor.svelte';
 
     let loading = $state(false);
@@ -67,16 +68,14 @@ function onsubmit(){
 
 
 {#if visible}
-  <div class="bg-green-600 w-[400px] flex flex-row flex-wrap text-white fixed top-6 z-10 right-1 rounded-md p-4" transition:fly={{ x: 200, duration: 500 }}>
-   
+  <div class={toastmsg} transition:fly={{ x: 200, duration: 500 }}>
     <CircleCheck class="text-white justify-self-center w-8 h-8" />
     <h6 class="text-white font-bold"> {form?.message}</h6>
    </div>
 {/if}
 
 {#if errorVisible}
-  <div class="bg-red-600 w-[400px] flex flex-row flex-wrap text-white fixed top-6 z-10 right-1 rounded-md p-4" transition:fly={{ x: 200, duration: 500 }}>
-    
+  <div class={redmsg} transition:fly={{ x: 200, duration: 500 }}>
     <CircleAlert class="text-white justify-self-center w-8 h-8" />
     <h6 class="text-white font-bold">Oops! {form?.message}.</h6>
   </div>

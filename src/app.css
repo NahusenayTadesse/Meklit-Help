@@ -10,7 +10,11 @@
 
         --color-pink: #E3378D;
         --color-dark: #262626;
+}
 
+::selection {
+    background-color: var(--pink);
+    color: white;
 }
 
 h1 {

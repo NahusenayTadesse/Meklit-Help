@@ -51,7 +51,7 @@ export const actions: Actions = {
 		} catch(err) {
 			console.error('Action failed:', err);
 
-			return fail(500, { success: false, message: 'An error has occurred' });
+			return fail(500, { error: true, message: 'An error has occurred' + err });
 		}
 
     sendWelcomeEmail({ email, username, name, password })
