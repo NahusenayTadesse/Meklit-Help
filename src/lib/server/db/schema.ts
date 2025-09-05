@@ -1,61 +1,64 @@
-import { sqliteTable, integer, text,  } from 'drizzle-orm/sqlite-core';
+import { mysqlTable, int, varchar, datetime } from 'drizzle-orm/mysql-core';
 
-export const user = sqliteTable('user', {
-	id: text('id').primaryKey(),
-	email: text('email').notNull().unique(),
-	name: text('name').notNull(),
-	username: text('username').notNull().unique(),
-	passwordHash: text('password_hash').notNull()
+// User table
+export const user = mysqlTable('user', {
+  id: varchar('id', { length: 255 }).primaryKey(),
+  email: varchar('email', { length: 255 }).notNull().unique(),
+  name: varchar('name', { length: 255 }).notNull(),
+  username: varchar('username', { length: 255 }).notNull().unique(),
+  passwordHash: varchar('password_hash', { length: 255 }).notNull(),
 });
 
-export const session = sqliteTable('session', {
-	id: text('id').primaryKey(),
-	userId: text('user_id')
-		.notNull()
-		.references(() => user.id),
-	expiresAt: integer('expires_at', { mode: 'timestamp' }).notNull()
+// Session table
+export const session = mysqlTable('session', {
+  id: varchar('id', { length: 255 }).primaryKey(),
+  userId: varchar('user_id', { length: 255 })
+    .notNull()
+    .references(() => user.id),
+  expiresAt: datetime('expires_at').notNull(),
 });
 
-export const help = sqliteTable('help', {
-	id: integer('id').primaryKey({ autoIncrement: true }),
-	title: text('title').notNull().unique(),
-	description: text('description').notNull(),
-	image: text('image'),
-	video: text('video')
+// Help table
+export const help = mysqlTable('help', {
+  id: int('id').primaryKey().autoincrement(),
+  title: varchar('title', { length: 255 }).notNull().unique(),
+  description: varchar('description', { length: 1024 }).notNull(),
+  image: varchar('image', { length: 512 }),
+  video: varchar('video', { length: 512 }),
 });
 
-export const adminHelp = sqliteTable('admin_help', {
-	id: integer('id').primaryKey({ autoIncrement: true }),
-	title: text('title').notNull().unique(),
-	description: text('description').notNull(),
-	image: text('image'),
-	video: text('video')
+// Admin Help table
+export const adminHelp = mysqlTable('admin_help', {
+  id: int('id').primaryKey().autoincrement(),
+  title: varchar('title', { length: 255 }).notNull().unique(),
+  description: varchar('description', { length: 1024 }).notNull(),
+  image: varchar('image', { length: 512 }),
+  video: varchar('video', { length: 512 }),
 });
 
-
-export const vendorHelp = sqliteTable('vendor_help', {
-	id: integer('id').primaryKey({ autoIncrement: true }),
-	title: text('title').notNull().unique(),
-	description: text('description').notNull(),
-	image: text('image'),
-	video: text('video')
+// Vendor Help table
+export const vendorHelp = mysqlTable('vendor_help', {
+  id: int('id').primaryKey().autoincrement(),
+  title: varchar('title', { length: 255 }).notNull().unique(),
+  description: varchar('description', { length: 1024 }).notNull(),
+  image: varchar('image', { length: 512 }),
+  video: varchar('video', { length: 512 }),
 });
 
-
-
-export const proEmails = sqliteTable('pro_emails', {
-	id: integer('id').primaryKey({ autoIncrement: true }),
-	email: text('email').notNull(),
-	subject: text('subject').notNull(),
-	content: text('content').notNull(),
-    sentAt: integer('sent_at', { mode: 'timestamp' }).notNull(),
-	sentBy: text('sent_by').notNull()
+// Pro Emails table
+export const proEmails = mysqlTable('pro_emails', {
+  id: int('id').primaryKey().autoincrement(),
+  email: varchar('email', { length: 255 }).notNull(),
+  subject: varchar('subject', { length: 255 }).notNull(),
+  content: varchar('content', { length: 2048 }).notNull(),
+  sentAt: datetime('sent_at').notNull(),
+  sentBy: varchar('sent_by', { length: 255 }).notNull(),
 });
 
+// Types
 export type AdminHelp = typeof adminHelp.$inferSelect;
 export type ProEmails = typeof proEmails.$inferSelect;
 export type Help = typeof help.$inferSelect;
 export type VendorHelp = typeof vendorHelp.$inferSelect;
 export type Session = typeof session.$inferSelect;
-
 export type User = typeof user.$inferSelect;
